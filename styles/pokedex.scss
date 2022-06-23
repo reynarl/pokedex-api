@@ -1,7 +1,6 @@
 $borde: #9FD9FE;
 $pokemon-red: #c70024;
 
-
 @mixin animation-pokedex($name) {
   animation-name: $name;
   animation-duration: 2s;
@@ -90,7 +89,6 @@ body{
     }
   }
   @include animation-pokedex(pokedexOpen);
-  
 }
 
 //Inicio - todos los pokemones
@@ -111,7 +109,7 @@ body{
   &-height, &-weight{
     h6{
       background-color: $pokemon-red;
-      width: 180px;
+      width: 170px;
       color: white;
       margin: 0;
       padding: 5px 20px;
@@ -127,11 +125,6 @@ body{
     }
   }
 
-  #pokeImage{
-    // width: 45%;
-    // background-color: #c70024;
-  }
-
   //Estadísticas del pokemon
   &-stats{
     background-color: rgba(255, 255, 255, 0.384);
@@ -140,14 +133,15 @@ body{
     font-size: 17px;
     justify-content: space-around;
     align-items: center;
-    width: 230px;
-    height: 180px;
+    width: 260px;
+    height: 200px;
     border-radius: 0 0 8px 8px;
     ul{
       padding: 0;
+      margin-top: 3px;
       li{
         list-style: none;
-        margin-top: 5px;
+        margin-top: 2px;
       }
     }
     .progress{

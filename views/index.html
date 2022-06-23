@@ -24,6 +24,17 @@
     <!-- Mostrar pokemon por nombre -->
     <div id="getPokemon">
       <div class="pokemon d-flex">
+
+        
+        <div>
+          <h6 class="pokemon-stats-title">Estadísticas</h6>
+          <div class="pokemon-stats d-flex ">
+            <ul id="statList"></ul>
+            <div id="progressBar" class=""></div>
+          </div>
+        </div>
+
+        <img id="pokeImage" alt="pokemon_img">
         <div class="d-flex flex-column">
           <div class="pokemon-height">
             <h6>Altura</h6>
@@ -34,41 +45,13 @@
             <p id="pokeWeight" class="text-right"></p>
           </div>
         </div>
-        <img id="pokeImage" alt="pokemon_img">
-        <div>
-          <h6 class="pokemon-stats-title">Estadísticas</h6>
-          <div class="pokemon-stats d-flex ">
-            <ul>
-              <li>PS</li>
-              <li>Ataque</li>
-              <li>Defensa</li>
-              <li>Velocidad</li>
-              <li>Ataque esp.</li>
-            </ul>
-            <div class="">
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">25%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">25%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">25%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">25%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 55%;" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">25%</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
+      <!-- Mostrar nombre, id y tipo del pokemon -->
       <div class="pokemon-details d-flex">
-        <p id="pokeNum">N. 006</p>
-        <p id="pokeName">Charizard</p>
-        <p id="pokeType">Fuego</p>
+        <p id="pokeNum"></p>
+        <p id="pokeName"></p>
+        <p id="pokeType"></p>
       </div>
       <button id="btnBack" type="button">&larr; Atrás</button>
     </div>

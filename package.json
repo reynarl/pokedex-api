@@ -1,17 +1,19 @@
 {
   "name": "pokedex-api",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node js/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node-fetch": "^3.2.6",
     "request": "^2.88.2",
-    "standard": "^17.0.0"
+    "sass": "^1.52.3"
   }
 }
