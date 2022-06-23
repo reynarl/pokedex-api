@@ -10,12 +10,9 @@ getPokemon.style.display = 'none'
 
 //evento al dar click en buscar
 btnSearch.addEventListener('click',()=>{
-  // getName.value === '' ? console.log('ingresa un nombre')
   
-
-  let name = getName.value
-
-  fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`)
+  let names = getName.value.toLowerCase()
+  fetch(`https://pokeapi.co/api/v2/pokemon/${names}`)
   .then(resp => resp.json())
   .then(data =>{
     pokedexBody.style.display = 'flex',
@@ -26,7 +23,6 @@ btnSearch.addEventListener('click',()=>{
       types:[{type:{name:type_name}}], sprites:{other:{home:{front_default}}}, 
       name, height, weight, id, stats, sprites:{versions:{'generation-v':gv}}
     } = data
-  
 
     let pokeHeight = document.getElementById('pokeHeight')
     let pokeWeight = document.getElementById('pokeWeight')
@@ -71,7 +67,7 @@ btnSearch.addEventListener('click',()=>{
     let msgEror = document.getElementById('msgError')
     getPokemon.style.display = 'none'
     showPokemon.style.display = 'flex'
-    msgEror.innerHTML = `Pokemon no encontrado, ingresa un nuevo nombre`
+    msgEror.innerHTML = `⚠️ Pokemon no encontrado, ingresa un nuevo nombre`
     setTimeout(() => {
       msgEror.innerHTML = ''
     }, 2000);
@@ -86,7 +82,7 @@ btnBack.addEventListener('click',()=>{
 
 //Obtener los pokemones
 setTimeout(()=>{
-  for(let i=1;i<34;i++){
+  for(let i=40;i<73;i++){
     fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
     .then(resp => resp.json()
     .then(data =>{
