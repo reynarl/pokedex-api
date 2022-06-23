@@ -4,27 +4,29 @@ let pokedexBody = document.getElementById('pokedex-body')
 let getPokemon = document.getElementById('getPokemon')
 let getName = document.getElementById('getName')
 let showPokemon = document.getElementById('showPokemon')
-
-
 // oculta la seccion que mostrará un pokemon
 getPokemon.style.display = 'none'
 
 
 //evento al dar click en buscar
 btnSearch.addEventListener('click',()=>{
-  pokedexBody.style.display = 'flex'
-  getPokemon.style.display = 'block'
-  showPokemon.style.display = 'none'
+  // getName.value === '' ? console.log('ingresa un nombre')
+  
 
   let name = getName.value
 
   fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`)
   .then(resp => resp.json())
   .then(data =>{
+    pokedexBody.style.display = 'flex',
+    getPokemon.style.display = 'block',
+    showPokemon.style.display = 'none'
+
     const { 
       types:[{type:{name:type_name}}], sprites:{other:{home:{front_default}}}, 
-      name, height, weight, id, stats 
+      name, height, weight, id, stats, sprites:{versions:{'generation-v':gv}}
     } = data
+  
 
     let pokeHeight = document.getElementById('pokeHeight')
     let pokeWeight = document.getElementById('pokeWeight')
@@ -34,8 +36,8 @@ btnSearch.addEventListener('click',()=>{
     let pokeType = document.getElementById('pokeType')
 
     //Mostrando los datos
-    pokeHeight.innerHTML = `${height/10} m.`
-    pokeWeight.innerHTML = `${weight/10} kg.`
+    pokeHeight.innerHTML = `<img src="${gv['black-white'].animated['back_default']}">${height/10} m`
+    pokeWeight.innerHTML = `<img src="${gv['black-white'].animated['front_default']}">${weight/10} kg`
     pokeImage.src = `${front_default}`
     pokeNum.innerHTML = `N. 0${id}`
     pokeName.innerHTML = `${name}`
@@ -58,8 +60,7 @@ btnSearch.addEventListener('click',()=>{
       statList.innerHTML += `<li>${stats.stat['name']}</li>`
       progressBar.innerHTML += `
       <div class="progress">
-      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: ${stats.base_stat}%;" aria-valuenow="${stats.base_stat}" aria-valuemin="0" aria-valuemax="100">${stats.base_stat}%</div>
-      </div>
+      <div class="progress-bar progress-bar-striped" role="progressbar" style="width: ${stats.base_stat}%;" aria-valuenow="${stats.base_stat}" aria-valuemin="0" aria-valuemax="100">${stats.base_stat}%</div></div>
       `
     })
 
@@ -67,16 +68,19 @@ btnSearch.addEventListener('click',()=>{
 
   })
   .catch(error=>{
-    console.log(error)
+    let msgEror = document.getElementById('msgError')
+    getPokemon.style.display = 'none'
+    showPokemon.style.display = 'flex'
+    msgEror.innerHTML = `Pokemon no encontrado, ingresa un nuevo nombre`
+    setTimeout(() => {
+      msgEror.innerHTML = ''
+    }, 2000);
   })
 
 })
 
-//boton de inicio
+//pokebola (boton) de inicio
 btnBack.addEventListener('click',()=>{
-  // pokedexBody.style.display = 'flex'
-  // getPokemon.style.display = 'none'
-  // showPokemon.style.display = 'flex'
   location.reload()
 })
 
