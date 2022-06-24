@@ -1,12 +1,53 @@
-$borde: #9FD9FE;
-$pokemon-red: #c70024;
-
 @mixin animation-pokedex($name) {
   animation-name: $name;
   animation-duration: 2s;
   animation-delay: 1.5s;
   animation-fill-mode: forwards;
 };
+
+@mixin responsive($breakpoint) {
+  @if ($breakpoint == $small) {
+    @media screen and (min-width: $small) {
+      @content;
+    }
+  }
+  @if ($breakpoint == $medium) {
+    @media screen and (min-width: $medium) {
+      @content;
+    }
+  }
+  @if ($breakpoint == $large) {
+    @media screen and (min-width: $large) {
+      @content;
+    }
+  }
+  @if ($breakpoint == $extra-large) {
+    @media screen and (min-width: $extra-large) {
+      @content;
+    }
+  }
+  @if ($breakpoint == $extra-extra-large) {
+    @media screen and (min-width: $extra-extra-large) {
+      @content;
+    }
+  }
+  @if ($breakpoint == $extra-4k) {
+    @media screen and (min-width: $extra-4k) {
+      @content;
+    }
+  }
+}
+
+//break points
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$extra-large: 1200px;
+$extra-extra-large: 1400px;
+$extra-4k: 2560px;
+//variables
+$borde: #9FD9FE;
+$pokemon-red: #c70024;
 
 
 *{
@@ -52,25 +93,36 @@ body{
     z-index: -1;
     @include animation-pokedex(pokedexBody);
     input{
-      width: 600px;
-      height: 50px;
+      width: 100%;
+      height: 40px;
       border: none;
       border-radius: 20px;
       text-align: center;
       font-size: 20px;
-      margin-top: 10px;
+      margin-top: 8px;
+      @include responsive($medium){
+        width: 600px;
+        height: 50px;
+        margin-top: 10px;
+      }
     }
     button{
-      width: 200px;
-      height: 50px;
-      margin: 20px 0 0px;
+      width: 150px;
+      height: 40px;
+      margin: 10px 0 0px;
       border: none;
       border-radius: 10px;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.486);
       background-color: $pokemon-red;
       color: white;
       font-weight: 500;
-      font-size: 19px;
+      font-size: 16px;
+      @include responsive($medium){
+        width: 200px;
+        height: 50px;
+        margin: 20px 0 0px;
+        font-size: 19px;
+      }
       &:hover{
         background-color: #cc0033;
         box-shadow: 0 5px 5px rgba(255, 255, 255, 0.432);
@@ -110,9 +162,18 @@ body{
 
 //mostrar pokemon por nombre
 .pokemon{
-  justify-content: space-evenly;
   align-items: center;
+  flex-direction: column;
+  @include responsive($medium){
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+  }
+
   &-height, &-weight{
+    @include responsive($medium){
+      
+    }
     h6{
       background-color: $pokemon-red;
       width: 180px;
@@ -136,6 +197,26 @@ body{
       img{
         width: 55%;
       }
+    }
+  }
+
+  #pokeImage{
+    order:1;
+    width: 100%;
+    @include responsive($medium){
+      order: 2;
+    }
+  }
+  .order2{
+    order: 3;
+    @include responsive($medium){
+      order: 1;
+    }
+  }
+  .order3{
+    order: 2;
+    @include responsive($medium){
+      order: 3;
     }
   }
 
@@ -174,7 +255,7 @@ body{
 
   //Nombre, numero y tipo
   &-details{
-    width: 600px;
+    width: 100%;
     justify-content: space-evenly;
     margin: auto;
     margin-top: 20px;
@@ -183,6 +264,9 @@ body{
     font-size: 24px;
     font-weight: 500;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.175) 0%, rgba(221,102,124,1) 24%, rgba(207,36,67,1) 37%, rgba(199,0,36,1) 50%, rgba(207,36,67,1) 63%, rgba(221,102,124,1) 76%, rgba(255, 255, 255, 0.178) 100%);
+    @include responsive($medium){
+      width: 600px;
+    }
   }
 }
 
@@ -222,6 +306,7 @@ body{
     // height: 650px;
     width: 80%;
     margin: 0 15% 0 10%;
+    
   }
 }
 @keyframes pokedexTopOpen{
