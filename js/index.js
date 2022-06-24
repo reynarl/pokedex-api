@@ -4,13 +4,12 @@ let pokedexBody = document.getElementById('pokedex-body')
 let getPokemon = document.getElementById('getPokemon')
 let getName = document.getElementById('getName')
 let showPokemon = document.getElementById('showPokemon')
-// oculta la seccion que mostrará un pokemon
 getPokemon.style.display = 'none'
 
 
 //evento al dar click en buscar
 btnSearch.addEventListener('click',()=>{
-  
+
   let names = getName.value.toLowerCase()
   fetch(`https://pokeapi.co/api/v2/pokemon/${names}`)
   .then(resp => resp.json())
@@ -39,7 +38,7 @@ btnSearch.addEventListener('click',()=>{
     pokeName.innerHTML = `${name}`
     pokeType.innerHTML = `${type_name}`
 
-    //remueve los hijos y no se duplican
+
     while(progressBar.firstChild){
       progressBar.removeChild(progressBar.firstChild)
     }
